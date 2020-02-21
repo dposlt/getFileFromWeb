@@ -4,10 +4,13 @@ import configparser
 def getWebFromIni(inifile):
     config = configparser.ConfigParser()
     
-    #config.read(inifile)
-
-    if 'WEBSITE' in config:
-        return config['WEBSITE']
+    #print(config.read(inifile))
+    config.read(inifile)
 
 
-print(getWebFromIni('config.ini'))
+    if 'DEFAULT' in config:
+        web = config['DEFAULT']['Web']
+        path = config['DEFAULT']['TargetPath']
+        return web, path
+
+#getWebFromIni('src\config.ini')

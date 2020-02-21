@@ -1,7 +1,11 @@
-import urllib3
+import urllib.request
+import config
 
 def openWeb(web):
-    ow = urllib3.connection(web)
-    return ow
+    with urllib.request.urlopen(web) as f:
+        print(f.read(300))
 
-openWeb
+
+web,path = config.getWebFromIni('config.ini')
+
+openWeb(web)
